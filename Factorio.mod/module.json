@@ -1,0 +1,130 @@
+{
+  "id": "factorio",
+  "name": "Factorio Server",
+  "version": "1.1.0",
+  "author": "Shenniko",
+  "description": "WindowsGSH module for Factorio Server.",
+  "url": "https://github.com/WindowsGSH/WindowsGSH.Factorio",
+  "repository": "https://github.com/WindowsGSH/WindowsGSH.Factorio",
+  "sourceUrl": "https://github.com/WindowsGSH/WindowsGSH.Factorio",
+  "color": "#775A42",
+  "moduleApiVersion": "1.0",
+  "minimumWindowsGshVersion": "0.1.0",
+  "type": "csharp",
+  "entry": "WindowsGSH.Modules.Factorio.FactorioModule",
+  "entryPoints": {
+    "start": "bin/x64/factorio.exe",
+    "processName": "factorio"
+  },
+  "runtime": {
+    "allowsEmbeddedConsole": true,
+    "portIncrements": 1,
+    "queryProtocol": "process",
+    "defaultArguments": ""
+  },
+  "capabilities": {
+    "directConnection": true
+  },
+  "configFields": [
+    {
+      "key": "network.port",
+      "label": "Game Port",
+      "type": "Port",
+      "defaultValue": 34197,
+      "required": true,
+      "minimum": 1,
+      "maximum": 65535,
+      "group": "Network"
+    },
+    {
+      "key": "server.saveName",
+      "label": "Save File Name",
+      "type": "Text",
+      "defaultValue": "world.zip",
+      "required": true,
+      "group": "Server"
+    },
+    {
+      "key": "server.name",
+      "label": "Server Name",
+      "type": "Text",
+      "defaultValue": "WindowsGSH Factorio Server",
+      "required": true,
+      "group": "Server"
+    },
+    {
+      "key": "server.description",
+      "label": "Description",
+      "type": "Text",
+      "defaultValue": "",
+      "group": "Server"
+    },
+    {
+      "key": "server.maxPlayers",
+      "label": "Maximum Players",
+      "type": "Number",
+      "defaultValue": 0,
+      "minimum": 0,
+      "maximum": 65535,
+      "group": "Server",
+      "description": "Use 0 for no player limit."
+    },
+    {
+      "key": "server.password",
+      "label": "Server Password",
+      "type": "Password",
+      "defaultValue": "",
+      "group": "Security"
+    },
+    {
+      "key": "server.visibilityPublic",
+      "label": "List Publicly",
+      "type": "Boolean",
+      "defaultValue": false,
+      "group": "Network",
+      "description": "Public listing also requires Factorio account credentials in server-settings.json."
+    },
+    {
+      "key": "server.visibilityLan",
+      "label": "List on LAN",
+      "type": "Boolean",
+      "defaultValue": true,
+      "group": "Network"
+    },
+    {
+      "key": "server.autoPause",
+      "label": "Pause When Empty",
+      "type": "Boolean",
+      "defaultValue": true,
+      "group": "Gameplay"
+    },
+    {
+      "key": "server.autosaveInterval",
+      "label": "Autosave Interval (minutes)",
+      "type": "Number",
+      "defaultValue": 10,
+      "minimum": 1,
+      "maximum": 1440,
+      "group": "Gameplay"
+    }
+  ],
+  "ports": [
+    {
+      "id": "game",
+      "name": "Game Port",
+      "protocol": "udp",
+      "configField": "network.port",
+      "required": true
+    }
+  ],
+  "backupTargets": [
+    {
+      "key": "data",
+      "label": "Server data",
+      "path": "saves",
+      "type": "directory",
+      "required": false
+    }
+  ],
+  "addons": []
+}
